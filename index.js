@@ -108,6 +108,12 @@ class Car {
   }
 }
 
+const toyota = new Car('Toyota Camry', 20);
+
+toyota.fill(5);
+toyota.drive(35);
+
+console.log('Task 2: ',toyota.drive(100));
 /*
   TASK 3
     - Write a Lambdasian class.
@@ -131,6 +137,13 @@ class Lambdasian {
   }
 }
 
+const tranequa = new Lambdasian({
+  name:'TraNequa Fauntleroy',
+  age: 32,
+  location: 'Kentucky'
+});
+
+console.log('Task 3: ', tranequa.speak());
 /*
   TASK 4
     - Write an Instructor class extending Lambdasian.
@@ -161,6 +174,18 @@ class Instructor extends Lambdasian{
     return `${student.name} receives a perfect score on ${subject}`;
   }
 }
+
+const brit = new Instructor({
+  name: 'Brit Hemming',
+  age: 32,
+  location: 'Montreal',
+  specialty: 'teaching',
+  favLanguage: 'JavaScript',
+  catchPhrase: 'Here are the notes from today'
+})
+
+
+console.log('Task 4: ', brit.specialty);
 /*
   TASK 5
     - Write a Student class extending Lambdasian.
@@ -204,7 +229,7 @@ const cy = new Student ({
   favSubjects: ['JavaScript', 'Python', 'React'],
 });
 
-console.log('Task 5: ', cy.listSubjects());
+console.log('Task 5: ', cy.PRAssignment('JavaScript'));
 
 /*
   TASK 6
@@ -234,6 +259,19 @@ class ProjectManager extends Instructor{
     return `${this.name} debugs ${student.name}'s code on ${subject}`;
   }
 }
+
+const richard = new ProjectManager({
+  name: 'Richard Oh',
+  age: 33,
+  location: 'Austin',
+  specialty: 'sales',
+  favLanguage: 'JavaScript',
+  catchPhrase: 'What if we tried this',
+  gradClassName: 'Web46',
+  favInstructor: 'Brit Hemming'
+});
+
+console.log('Task 6: ', richard.debugsCode(cy, 'JavaScript'));
 /*
   STRETCH PROBLEM (no tests!)
     - Extend the functionality of the Student by adding a prop called grade and setting it equal to a number between 1-100.
