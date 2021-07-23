@@ -173,6 +173,15 @@ class Instructor extends Lambdasian{
   grade(student, subject){
     return `${student.name} receives a perfect score on ${subject}`;
   }
+  addOrSubtractPoints(student){
+    let plusOrMinus = 0;
+    if(Math.round(Math.random()) === 0){
+      plusOrMinus = -1;
+    } else {
+      plusOrMinus = 1;
+    }
+    return student.grade = student.grade + plusOrMinus * Math.round(Math.random()*10);
+  }
 }
 
 const brit = new Instructor({
@@ -207,6 +216,7 @@ class Student extends Lambdasian{
     this.previousBackground = object.previousBackground;
     this.className = object.className;
     this.favSubjects = object.favSubjects;
+    this.grade = object.grade;
   }
   listSubjects(){
     return `Loving ${this.favSubjects}!`;
@@ -218,6 +228,14 @@ class Student extends Lambdasian{
   sprintChallenge(subject){
     return `${this.name} has begun sprint challenge on ${subject}`;
   }
+
+  graduate(){
+    if(this.grade >= 70){
+      return `Congratulations! You are a graduate of the Lambda School Program!`;
+    } else {
+      return `Continue asking your instructors to grade you`;
+    }
+  }
 }
 
 const cy = new Student ({
@@ -227,6 +245,7 @@ const cy = new Student ({
   previousBackground: 'Operations and Facilities',
   className: 'Web 46',
   favSubjects: ['JavaScript', 'Python', 'React'],
+  grade: 50
 });
 
 console.log('Task 5: ', cy.PRAssignment('JavaScript'));
@@ -272,6 +291,23 @@ const richard = new ProjectManager({
 });
 
 console.log('Task 6: ', richard.debugsCode(cy, 'JavaScript'));
+
+brit.addOrSubtractPoints(cy);
+richard.addOrSubtractPoints(cy);
+brit.addOrSubtractPoints(cy);
+richard.addOrSubtractPoints(cy);
+brit.addOrSubtractPoints(cy);
+richard.addOrSubtractPoints(cy);
+
+//Console log tests of my stretch exercises
+console.log('Stretch 1: ', cy.grade);
+
+console.log('Stretch 2: ', brit.addOrSubtractPoints(cy), cy.grade, richard.addOrSubtractPoints(cy), cy.grade);
+
+console.log('Stretch 3: ', cy.grade, cy.graduate());
+
+
+
 /*
   STRETCH PROBLEM (no tests!)
     - Extend the functionality of the Student by adding a prop called grade and setting it equal to a number between 1-100.
